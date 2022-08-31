@@ -4,36 +4,34 @@ pipeline{
 
 // uncomment the following lines by removing /* and */ to enable
     tools{
-       nodes ‘nodejs’ 
+       nodejs 'nodejs' 
     }
-    
+   
 
     stages{
-        stage(‘compile-app’){
+        stage('compile-app'){
             steps{
-                echo ‘this is the compile job’
-                sh ‘npm install’
-                            }
-        }
-        stage(‘test-app’){
-            steps{
-                echo ‘this is the test job’
-                sh ‘npm test’
-               
+                echo 'this is the compile job'
+                sh 'npm install'
             }
         }
-        stage(‘package-app’){
+        stage('test-app'){
             steps{
-                echo ‘this is the package job’
-                sh ‘npm run package’
-             
+                echo 'this is the test job'
+                sh 'npm test'
+            }
+        }
+        stage('package-app'){
+            steps{
+                echo 'this is the package job'
+                sh 'npm run package'
             }
         }
     }
     
     post{
         always{
-            echo 'this pipeline has completed...'
+            echo 'Hey, this is my first pipeline as code...'
         }
         
     }
